@@ -1,28 +1,21 @@
-# 5 New Field
-This demonstrates how adding new, non-breaking, changes are handled with our versioning system. In this case we add a new field, `animation`, to our raw data. However, because this change would not break any of our existing consumers no Change definition is necessary, and the update is propagated out to all consumers.
+# 6 Documentation Generation
+Here we show how our system of explicit entries for API changes can assist in auto generating documentation. Here we demonstrate how it can be used to generate a changelog. The new script can be run by executing `node gen-docs.js`
 
-## File changes
-* **data.js** - Added new field `animation` to one of our components
+## Files Added
+* **gen-docs.js** - A script for auto generating documentation using our Changes
+* **changes.js** - Example markdown output from running `node gen-docs.js > changes.md`
 
-## Example Requests
+## Example Output
 ```
-$ curl "localhost:3000/a"
-{
-  "id": "a",
-  "role": "body",
-  "data": "The content of a body",
-  "animation": "ease-from-left"
-}
-```
+$ node gen-docs.js
 
-
-```
-$ curl "localhost:3000/a?version=2018-01-01"
-{
-  "id": "a",
-  "role": "body",
-  "data": "The content of a body",
-  "animation": "ease-from-left",
-  "position": 1
-}
+>> # Components changelog
+>>
+>> ## 2018-01-12
+>> * Added video component
+>>
+>>
+>> ## 2018-01-05
+>> * Removed the position field
+>>
 ```
