@@ -1,6 +1,8 @@
 'use strict';
 
-// Our serializer simply returns whatever we got from the database
 module.exports = (raw) => {
+  // Strip the "position" field from our serialization
+  delete raw.position;
+
   return raw;
 };
