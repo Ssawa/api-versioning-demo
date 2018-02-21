@@ -2,10 +2,10 @@
 A base demonstration of an incredibly simple API server without any versioning. The server can be started by running `npm install` and `node app.js` (with Node 8 installed) to start a server on `localhost:3000`.
 
 ## Files
-* **app.js** - Starts our express application
-* **data.js** - Holds our testing data and provides functions to mimic database calls
-* **routes.js** - Initializes `GET` routes at `/` and `/:id` for receiving content from the database
-* **serialize.js** - Provides the stub of a function for transforming an element from the database into an API presentable response
+* **[app.js](./app.js)** - Starts our express application
+* **[data.js](./data.js)** - Holds our testing data and provides functions to mimic database calls
+* **[routes.js](./routes.js)** - Initializes `GET` routes at `/` and `/:id` for receiving content from the database
+* **[serialize.js](./serialize.js)** - Provides the stub of a function for transforming an element from the database into an API presentable response
 
 ## Example Requests
 ```
