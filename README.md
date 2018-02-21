@@ -1,14 +1,9 @@
-# 3: Versioning
-Demonstrates an approach for handling versioning. Here we're updating our server to apply a date based `version` to every request so that we can properly modify the serialized data.
+# 4: New Component
+Here we demonstrate how our versioning system can be used to handle things such as a new component becoming available
 
 ## File changes
-* **app.js** - Middleware added to add a `version` to user requests
-* **routes.js** - Updated to pass the `req` object to the serializer
-* **serialize.js** - Moved to `serialize/index.js`
-* **serialize** - Folder created
-* **serialize/changes.js** - A new file for holding a programmatic listing of all the breaking changes we've made to our database.
-* **serialize/index.js** - What was originally `serialize.js`, updated to make sure any breaking changes we make are backwards compatible using our versioning.
-* ****
+* **data.js** - Added a new example component with the role "video"
+* **serialize/changes.js** - Added a new Change instance to account for our new "video" component for older consumers
 
 ## Example Requests
 ```
@@ -17,17 +12,38 @@ $ curl "localhost:3000"
   {
     "id": "a",
     "role": "body",
-    "data": "The content of a body",
+    "data": "The content of a body"
   },
   {
     "id": "b",
-    "role": "image",
-    "data": "https://image.com",
+    "role": "video",
+    "data": "https://video.com"
   },
   {
     "id": "c",
     "role": "body",
-    "data": "the end of the article",
+    "data": "the end of the article"
+  }
+]
+```
+
+```
+$ curl "localhost:3000?version=2018-01-10"
+[
+  {
+    "id": "a",
+    "role": "body",
+    "data": "The content of a body"
+  },
+  {
+    "id": "b",
+    "role": "body",
+    "data": "Watch video <a href=\"https://video.com\">here</a>"
+  },
+  {
+    "id": "c",
+    "role": "body",
+    "data": "the end of the article"
   }
 ]
 ```
@@ -43,8 +59,8 @@ $ curl "localhost:3000?version=2018-01-01"
   },
   {
     "id": "b",
-    "role": "image",
-    "data": "https://image.com",
+    "role": "body",
+    "data": "Watch video <a href=\"https://video.com\">here</a>",
     "position": 2
   },
   {

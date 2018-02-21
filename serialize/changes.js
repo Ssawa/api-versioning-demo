@@ -12,6 +12,21 @@ class Change {
 // A mapping of all the breaking changes that happened to our API, the date they happened,
 // and a function for mapping converting that change into backwards compliance
 const changes = {
+
+  // We've added a new "video" component but need to account for that with our older consumers
+  // who may not know how to handle that.
+  '2018-01-12': [
+    new Change('Added video component', (req, raw, data) => {
+      // One possible solution for implementing backwards compatibility is by replacing the new
+      // component with an already existing one. In this case we update any components with the
+      // "video" role to "body" components with a link to the video
+      if (data.role === 'video') {
+        return { ...data, role: 'body', data: `Watch video <a href="${raw.data}">here</a>` }
+      }
+      return data;
+    }),
+  ],
+
   '2018-01-05': [
     // We've updated our API to strip out the "position" field from the response but to maintain
     // compatibility we need to add it back for consumers who are using a version of our API
