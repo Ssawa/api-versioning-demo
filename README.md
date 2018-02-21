@@ -2,7 +2,7 @@
 This demonstrates how adding new, non-breaking, changes are handled with our versioning system. In this case we add a new field, `animation`, to our raw data. However, because this change would not break any of our existing consumers no Change definition is necessary, and the update is propagated out to all consumers.
 
 ## File changes
-* **data.js** - Added new field `animation` to one of our components
+* **[data.js](./data.js)** - Added new field `animation` to one of our components
 
 ## Example Requests
 ```
