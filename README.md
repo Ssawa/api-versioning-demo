@@ -2,7 +2,7 @@
 This offers a demonstration of making a change to the API without any versioning being done to try to maintain backwards compatibility. This is an example of a change that would break existing consumers.
 
 ## File changes
-* **serialize.js** - The serializer has been updated to delete the "position" field from all entries
+* **[serialize.js](./serialize.js)** - The serializer has been updated to delete the "position" field from all entries
 
 ## Example Requests
 ```
