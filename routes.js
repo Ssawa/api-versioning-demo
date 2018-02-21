@@ -9,7 +9,7 @@ const serialize = require('./serialize');
 router.get('/', (req, res) => {
   res.send(
     JSON.stringify(
-      db.all().map(serialize),
+      db.all().map(serialize.bind(null, req)),
       null, 2
     )
   )
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   res.send(
     JSON.stringify(
-      serialize(db.one(req.params.id)),
+      serialize(req, db.one(req.params.id)),
       null, 2)
     )
 });
