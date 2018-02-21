@@ -1,4 +1,4 @@
-# 6 Documentation Generation
+# 6: Documentation Generation
 Here we show how our system of explicit entries for API changes can assist in auto generating documentation. Here we demonstrate how it can be used to generate a changelog. The new script can be run by executing `node gen-docs.js`
 
 ## Files Added
