@@ -2,8 +2,8 @@
 Here we demonstrate how our versioning system can be used to handle things such as a new component becoming available
 
 ## File changes
-* **data.js** - Added a new example component with the role "video"
-* **serialize/changes.js** - Added a new Change instance to account for our new "video" component for older consumers
+* **[data.js](./data.js)** - Added a new example component with the role "video"
+* **[serialize/changes.js](./serialize/changes.js)** - Added a new Change instance to account for our new "video" component for older consumers
 
 ## Example Requests
 ```
